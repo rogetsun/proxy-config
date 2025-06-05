@@ -9,7 +9,16 @@ DOMAIN-SUFFIX,ip-api.com
 DOMAIN-SUFFIX,agkn.com
 DOMAIN-SUFFIX,tktn.at
 DOMAIN-KEYWORD,tktn
+# Google Voice相关服务
+DOMAIN-SUFFIX,telephony.goog
+DOMAIN-SUFFIX,rcs.telephony.goog
+# AT&T相关服务
+DOMAIN-SUFFIX,fp-us-att.rcs.telephony.goog
+# Talkatone IP地址段
 IP-CIDR,50.117.27.0/24
 IP-CIDR,69.46.75.0/24
 IP-CIDR,205.164.56.0/24
 IP-CIDR,63.251.124.0/24
+# Google Voice相关IP (Anycast)
+IP-CIDR,216.239.36.131/32
+IP-CIDR,216.239.36.145/32
