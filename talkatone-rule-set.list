@@ -1,4 +1,4 @@
-# talkatone
+# Talkatone主要域名
 DOMAIN-SUFFIX,mobilefuse.com
 DOMAIN-SUFFIX,inmobi.com
 DOMAIN-SUFFIX,crashlytics.com
@@ -9,16 +9,83 @@ DOMAIN-SUFFIX,ip-api.com
 DOMAIN-SUFFIX,agkn.com
 DOMAIN-SUFFIX,tktn.at
 DOMAIN-KEYWORD,tktn
-# Google Voice相关服务
+DOMAIN-SUFFIX,flurry.com
+DOMAIN-SUFFIX,teemo.co
+DOMAIN-SUFFIX,dnsmadeeasy.com
+DOMAIN-SUFFIX,ooma.com
+
+# 谷歌语音服务域名
 DOMAIN-SUFFIX,telephony.goog
 DOMAIN-SUFFIX,rcs.telephony.goog
-# AT&T相关服务
 DOMAIN-SUFFIX,fp-us-att.rcs.telephony.goog
+DOMAIN-SUFFIX,stun.l.google.com
+DOMAIN-SUFFIX,aspmx.l.google.com
+DOMAIN-SUFFIX,googlemail.com
+DOMAIN-SUFFIX,alt1.aspmx.l.google.com
+DOMAIN-SUFFIX,alt2.aspmx.l.google.com
+DOMAIN-SUFFIX,voice.telephony.goog
+DOMAIN-SUFFIX,web.voice.telephony.goog
+DOMAIN-SUFFIX,p11.telephony.goog
+DOMAIN-SUFFIX,fi.telephony.goog
+DOMAIN-SUFFIX,obihai.telephony.goog
+DOMAIN-SUFFIX,unverified-forwarding.1e100.net
+
+# 谷歌推送和认证服务
+DOMAIN-SUFFIX,mtalk.google.com
+DOMAIN-SUFFIX,accounts.google.com
+DOMAIN-SUFFIX,api.push.apple.com
+
+# 广告和分析相关
+DOMAIN-SUFFIX,adjust.com
+DOMAIN-SUFFIX,appsflyer.com
+DOMAIN-SUFFIX,amplitude.com
+DOMAIN-SUFFIX,firebase.com
+DOMAIN-SUFFIX,iesnare.com
+DOMAIN-SUFFIX,mpsnare.iesnare.com
+DOMAIN-SUFFIX,giphy.com
+
 # Talkatone IP地址段
 IP-CIDR,50.117.27.0/24
 IP-CIDR,69.46.75.0/24
 IP-CIDR,205.164.56.0/24
 IP-CIDR,63.251.124.0/24
-# Google Voice相关IP (Anycast)
+IP-CIDR,23.253.145.244/32
+IP-CIDR,208.94.148.4/32
+IP-CIDR,208.80.124.4/32
+IP-CIDR,208.80.126.4/32
+IP-CIDR,208.80.125.4/32
+IP-CIDR,208.80.127.4/32
+IP-CIDR,208.94.149.4/32
+
+# Google Voice服务相关IP
 IP-CIDR,216.239.36.131/32
 IP-CIDR,216.239.36.145/32
+IP-CIDR,74.125.39.0/24
+IP-CIDR,74.125.250.129/32
+IP-CIDR,142.250.4.26/32
+IP-CIDR,142.250.147.26/32
+IP-CIDR,108.177.15.26/32
+IP-CIDR,74.125.131.27/32
+IP-CIDR,192.178.156.27/32
+IP-CIDR,192.178.156.26/32
+IP-CIDR,74.125.142.147/32
+IP-CIDR,108.177.11.188/32
+IP-CIDR,108.177.119.188/32
+IP-CIDR,108.177.12.188/32
+IP-CIDR,108.177.122.188/32
+IP-CIDR,108.177.123.188/32
+IP-CIDR,108.177.127.188/32
+IP-CIDR,108.177.14.188/32
+IP-CIDR,108.177.15.188/32
+IP-CIDR,108.177.96.188/32
+
+# Google邮件服务器IP段 (用于Gmail验证邮件)
+IP-CIDR,108.177.16.0/24
+IP-CIDR,108.177.17.0/24
+IP-CIDR,142.250.220.0/24
+IP-CIDR,142.250.221.0/24
+
+# 媒体传输端口(RTP/SRTP)
+# UDP端口范围: 10000-20000
+# SIP信令端口: 5060, 5061
+# STUN服务端口: 19302-19309, 3478
