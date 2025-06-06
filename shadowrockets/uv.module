@@ -6,5 +6,6 @@
 🇺🇸美国家宽 = select,SUB,use=true,policy-regex-filter=美国家宽
 
 [Rule]
+DOMAIN-KEYWORD,tymetro,DIRECT
 DOMAIN-KEYWORD,hushed,🇺🇸 美国
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,🇺🇸美国家宽
