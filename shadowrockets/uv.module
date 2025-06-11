@@ -3,8 +3,8 @@
 
 [Proxy Group]
 🇺🇸美国静态IP = select,US-session
-#🇺🇸美国家宽 = select,SUB,use=true,policy-regex-filter=美国家宽
-🇺🇸美国家宽 = fallback,interval=600,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=🇺🇸Los Angeles
+🇺🇸美国家宽 = select,policy-regex-filter=加拿大家宽
+#🇺🇸美国家宽 = fallback,interval=600,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=🇺🇸Los Angeles
 [Rule]
 DOMAIN-KEYWORD,tymetro,DIRECT
 DOMAIN-KEYWORD,hushed,🇺🇸 美国
