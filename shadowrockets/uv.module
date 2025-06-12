@@ -3,9 +3,13 @@
 
 [Proxy Group]
 🇺🇸美国静态IP = select,US-session
-🇺🇸美国家宽 = select,policy-regex-filter=加拿大家宽
-#🇺🇸美国家宽 = fallback,interval=600,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=🇺🇸Los Angeles
+🇺🇸美国家宽 = select,policy-regex-filter=加拿大家宽|美国家宽
+家宽 = select,policy-regex-filter=家宽
+美国 = select,policy-regex-filter=US|USA|America|america|United States|美国|凤凰城|洛杉矶|西雅图|芝加哥|纽约|沪美|美
+
 [Rule]
 DOMAIN-KEYWORD,tymetro,DIRECT
-DOMAIN-KEYWORD,hushed,🇺🇸 美国
-RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,🇺🇸美国家宽
+#DOMAIN-KEYWORD,hushed,🇺🇸 美国
+DOMAIN-KEYWORD,hushed,美国
+#RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,🇺🇸美国家宽
+RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,家宽

@@ -3,7 +3,6 @@
 
 [Proxy Group]
 🇺🇸美国静态IP = select,US-session
-🇺🇸美国家宽 = select,SUB,use=true,policy-regex-filter=美国家宽
 
 [Rule]
 DOMAIN-KEYWORD,tymetro,DIRECT
