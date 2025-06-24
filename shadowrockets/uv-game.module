@@ -1,0 +1,6 @@
+#!name=uv-game
+#!desc=游戏专用模块，PUBG国际版等游戏流量通过游戏节点
+
+[Rule]
+# 引用PUBG游戏规则集
+RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/pubg-game-rule-set.list,游戏节点 
