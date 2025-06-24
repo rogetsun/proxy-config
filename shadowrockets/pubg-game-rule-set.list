@@ -1,31 +1,110 @@
 # PUBG国际版游戏规则集
 # 包含所有PUBG Mobile相关的域名和IP段
 
-# PUBG主要游戏域名
+# PUBG核心服务域名（最关键的登录认证域名）
+DOMAIN-SUFFIX,id.pubg.com
+DOMAIN-SUFFIX,auth.pubg.com
+DOMAIN-SUFFIX,api.pubg.com
+DOMAIN-SUFFIX,login.pubg.com
+DOMAIN-SUFFIX,account.pubg.com
+DOMAIN-SUFFIX,esports.pubg.com
+DOMAIN-SUFFIX,store.pubg.com
+DOMAIN-SUFFIX,api.pubgmobile.com
+DOMAIN-SUFFIX,account.pubgmobile.com
+DOMAIN-SUFFIX,auth.pubgmobile.com
+DOMAIN-SUFFIX,login.pubgmobile.com
+DOMAIN-SUFFIX,service.pubgmobile.com
+
+# Krafton认证服务
+DOMAIN-SUFFIX,id.krafton.com
+DOMAIN-SUFFIX,auth.krafton.com
+DOMAIN-SUFFIX,api.krafton.com
+DOMAIN-SUFFIX,account.krafton.com
+DOMAIN-SUFFIX,login.krafton.com
+DOMAIN-SUFFIX,oauth.krafton.com
+DOMAIN-SUFFIX,sso.krafton.com
+
+# Level Infinite认证服务（PUBG Mobile 发行商）
+DOMAIN-SUFFIX,level-infinite.com
+DOMAIN-SUFFIX,id.level-infinite.com
+DOMAIN-SUFFIX,auth.level-infinite.com
+DOMAIN-SUFFIX,api.level-infinite.com
+DOMAIN-SUFFIX,account.level-infinite.com
+
+# Proxima Beta服务（PUBG Mobile 运营商）
+DOMAIN-SUFFIX,proximabeta.com
+DOMAIN-SUFFIX,api.proximabeta.com
+DOMAIN-SUFFIX,auth.proximabeta.com
+
+# PUBG关键登录认证域名
 DOMAIN-SUFFIX,pubgmobile.com
 DOMAIN-SUFFIX,gpubgm.com
 DOMAIN-SUFFIX,pubg.com
 DOMAIN-SUFFIX,krafton.com
 DOMAIN-SUFFIX,bluehole.net
-DOMAIN-KEYWORD,pubg
-DOMAIN-KEYWORD,battlegrounds
+DOMAIN-SUFFIX,battlegrounds.party
+DOMAIN-SUFFIX,pubgmobile.cn
+DOMAIN-SUFFIX,tencent.com
+DOMAIN-SUFFIX,qq.com
 
-# 游戏登录和认证服务
+# 社交登录服务
+DOMAIN-SUFFIX,accounts.google.com
+DOMAIN-SUFFIX,oauth2.googleapis.com
+DOMAIN-SUFFIX,www.googleapis.com
+DOMAIN-SUFFIX,apis.google.com
+DOMAIN-SUFFIX,facebook.com
+DOMAIN-SUFFIX,graph.facebook.com
+DOMAIN-SUFFIX,connect.facebook.net
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,api.twitter.com
+DOMAIN-SUFFIX,abs.twimg.com
+
+# Apple登录服务
+DOMAIN-SUFFIX,appleid.apple.com
+DOMAIN-SUFFIX,idmsa.apple.com
+DOMAIN-SUFFIX,gsa.apple.com
+
+# 游戏认证和PlayFab服务
 DOMAIN-SUFFIX,playfab.com
 DOMAIN-SUFFIX,playfabapi.com
-DOMAIN-SUFFIX,naver.com
-DOMAIN-SUFFIX,facebook.com
-DOMAIN-SUFFIX,twitter.com
-DOMAIN-SUFFIX,google.com
+DOMAIN-SUFFIX,titledata.playfab.com
+DOMAIN-SUFFIX,developer.playfab.com
+
+# Tencent游戏云服务和CDN
+DOMAIN-SUFFIX,tgp.qq.com
+DOMAIN-SUFFIX,ssl.kohsocialapp.qq.com
+DOMAIN-SUFFIX,midas.gtimg.cn
+DOMAIN-SUFFIX,api.unipay.qq.com
+DOMAIN-SUFFIX,intl.cloud.tencent.com
+
+# AWS游戏服务和认证
+DOMAIN-SUFFIX,cognito-idp.us-east-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-identity.us-east-1.amazonaws.com
+DOMAIN-SUFFIX,sts.amazonaws.com
+DOMAIN-SUFFIX,s3.amazonaws.com
+
+# 游戏统计和崩溃报告
+DOMAIN-SUFFIX,crashlytics.com
+DOMAIN-SUFFIX,fabric.io
+DOMAIN-SUFFIX,firebase.com
+DOMAIN-SUFFIX,firebaseapp.com
 DOMAIN-SUFFIX,googleapis.com
+
+# PUBG主要游戏域名
+DOMAIN-KEYWORD,pubg
+DOMAIN-KEYWORD,battlegrounds
+DOMAIN-KEYWORD,krafton
+
+# 游戏登录和认证服务
+DOMAIN-SUFFIX,naver.com
+DOMAIN-SUFFIX,line.me
+DOMAIN-SUFFIX,line.naver.jp
 
 # 游戏分析和统计服务
 DOMAIN-SUFFIX,gameanalytics.com
 DOMAIN-SUFFIX,adjust.com
 DOMAIN-SUFFIX,appsflyer.com
 DOMAIN-SUFFIX,amplitude.com
-DOMAIN-SUFFIX,firebase.com
-DOMAIN-SUFFIX,crashlytics.com
 DOMAIN-SUFFIX,flurry.com
 
 # Tencent游戏云服务
@@ -48,6 +127,40 @@ DOMAIN-SUFFIX,googleplay.com
 DOMAIN-SUFFIX,agora.io
 DOMAIN-SUFFIX,agoralab.co
 DOMAIN-SUFFIX,voice.com
+
+# 游戏匹配和反作弊服务
+DOMAIN-SUFFIX,battleye.com
+DOMAIN-SUFFIX,easyanticheat.net
+DOMAIN-SUFFIX,pubgsvc.com
+DOMAIN-SUFFIX,pubgtracker.com
+
+# 网络连接测试和优化
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,fast.com
+DOMAIN-SUFFIX,ping.pe
+
+# Discord 游戏语音（很多玩家使用）
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discord.gg
+
+# 游戏直播相关（很多玩家会同时使用）
+DOMAIN-SUFFIX,twitch.tv
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,ytimg.com
+
+# 微软和Xbox服务（某些登录选项）
+DOMAIN-SUFFIX,live.com
+DOMAIN-SUFFIX,xbox.com
+DOMAIN-SUFFIX,xboxlive.com
+
+# 更多AWS认证服务的地域端点
+DOMAIN-SUFFIX,cognito-idp.ap-southeast-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-idp.ap-northeast-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-idp.eu-west-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-identity.ap-southeast-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-identity.ap-northeast-1.amazonaws.com
+DOMAIN-SUFFIX,cognito-identity.eu-west-1.amazonaws.com
 
 # 主要游戏服务器IP段
 # 北美东部 (弗吉尼亚)
