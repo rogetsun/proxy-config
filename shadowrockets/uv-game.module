@@ -1,6 +1,60 @@
 #!name=uv-game
 #!desc=游戏专用模块，PUBG国际版等游戏流量通过游戏节点
 
+[Proxy Group]
+游戏节点 = select,PROXY
+
 [Rule]
-# 引用PUBG游戏规则集
+# 最关键的PUBG认证域名（直接在模块中定义，确保优先匹配）
+DOMAIN-SUFFIX,pubg.com,游戏节点
+DOMAIN-SUFFIX,pubgmobile.com,游戏节点
+DOMAIN-SUFFIX,krafton.com,游戏节点
+DOMAIN-SUFFIX,bluehole.net,游戏节点
+DOMAIN-SUFFIX,playfab.com,游戏节点
+DOMAIN-SUFFIX,playfabapi.com,游戏节点
+
+# 关键认证子域名
+DOMAIN-SUFFIX,id.pubg.com,游戏节点
+DOMAIN-SUFFIX,auth.pubg.com,游戏节点
+DOMAIN-SUFFIX,api.pubg.com,游戏节点
+DOMAIN-SUFFIX,login.pubg.com,游戏节点
+DOMAIN-SUFFIX,account.pubg.com,游戏节点
+DOMAIN-SUFFIX,auth.pubgmobile.com,游戏节点
+DOMAIN-SUFFIX,api.pubgmobile.com,游戏节点
+DOMAIN-SUFFIX,account.pubgmobile.com,游戏节点
+DOMAIN-SUFFIX,login.pubgmobile.com,游戏节点
+
+# Krafton认证服务
+DOMAIN-SUFFIX,id.krafton.com,游戏节点
+DOMAIN-SUFFIX,auth.krafton.com,游戏节点
+DOMAIN-SUFFIX,api.krafton.com,游戏节点
+DOMAIN-SUFFIX,oauth.krafton.com,游戏节点
+DOMAIN-SUFFIX,sso.krafton.com,游戏节点
+
+# Level Infinite和Proxima Beta
+DOMAIN-SUFFIX,level-infinite.com,游戏节点
+DOMAIN-SUFFIX,proximabeta.com,游戏节点
+
+# 社交登录（这些可能被其他规则拦截）
+DOMAIN-SUFFIX,accounts.google.com,游戏节点
+DOMAIN-SUFFIX,oauth2.googleapis.com,游戏节点
+DOMAIN-SUFFIX,graph.facebook.com,游戏节点
+DOMAIN-SUFFIX,connect.facebook.net,游戏节点
+
+# AWS认证服务
+DOMAIN-SUFFIX,cognito-idp.us-east-1.amazonaws.com,游戏节点
+DOMAIN-SUFFIX,cognito-identity.us-east-1.amazonaws.com,游戏节点
+DOMAIN-SUFFIX,sts.amazonaws.com,游戏节点
+
+# 宽泛的关键词匹配（确保不遗漏）
+DOMAIN-KEYWORD,pubg,游戏节点
+DOMAIN-KEYWORD,krafton,游戏节点
+DOMAIN-KEYWORD,battlegrounds,游戏节点
+
+# Tencent相关服务
+DOMAIN-SUFFIX,tencent.com,游戏节点
+DOMAIN-SUFFIX,qq.com,游戏节点
+DOMAIN-SUFFIX,qcloud.com,游戏节点
+
+# 引用完整的PUBG游戏规则集
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/pubg-game-rule-set.list,游戏节点 
