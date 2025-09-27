@@ -2,7 +2,7 @@
 #!desc=自定义模块，覆盖梯子分组、规则等
 
 [Proxy Group]
-🇺🇸美国静态IP = select,US-session
+🇺🇸美国静态IP = select,US-session,us-proxy
 
 [Rule]
 DOMAIN-KEYWORD,tymetro,DIRECT
