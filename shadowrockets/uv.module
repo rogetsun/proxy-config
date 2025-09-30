@@ -3,14 +3,12 @@
 
 [Proxy Group]
 
-# 节点组
 🇺🇸美国静态IP = select,us-proxy,US-session
 美国 = select,policy-regex-filter=US|USA|America|america|United States|美国|凤凰城|洛杉矶|西雅图|芝加哥|纽约|沪美|美|加拿大
 家宽 = select,policy-regex-filter=home|HOME|家宽
 美国家宽 = select,policy-regex-filter=(?=.*美国)(?=.*家宽)|(?=.*加拿大)(?=.*家宽)
 游戏节点 = select,policy-regex-filter=游戏|Game|game|Gaming|gaming|GAME
 
-# 应用组
 TG = select,🇺🇸美国静态IP,美国家宽,家宽,policy-select-name=PROXY
 talkatone = select,🇺🇸美国静态IP,美国家宽,家宽,policy-select-name=PROXY
 
