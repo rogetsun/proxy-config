@@ -6,6 +6,7 @@
 DOMAIN-KEYWORD,tymetro,DIRECT
 DOMAIN-KEYWORD,hushed,TG
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,talkatone
-#RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,家宽
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/telegram-rule-set.list,TG
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/openai-rule-set.list,openai
+
+RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/binance-rule-set.list,binance
