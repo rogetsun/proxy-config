@@ -10,3 +10,4 @@ RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/openai-rule-set.list,openai
 
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/binance-rule-set.list,binance
+RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/github-rule-set.list,GitHub
