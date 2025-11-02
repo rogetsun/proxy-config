@@ -7,3 +7,4 @@ DOMAIN-KEYWORD,tymetro,DIRECT
 DOMAIN-KEYWORD,hushed,美国
 RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,美国家宽
 #RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/talkatone-rule-set.list,家宽
+RULE-SET,https://raw.githubusercontent.com/rogetsun/proxy-config/refs/heads/main/shadowrockets/binance-rule-set.list,binance
