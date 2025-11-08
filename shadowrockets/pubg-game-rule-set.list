@@ -1,6 +1,9 @@
 # PUBG国际版游戏规则集
 # 包含所有PUBG Mobile相关的域名和IP段
 
+DOMAIN-KEYWORD,igamecj
+DOMAIN-SUFFIX,wetest.net
+
 # PUBG核心服务域名（最关键的登录认证域名）
 DOMAIN-SUFFIX,id.pubg.com
 DOMAIN-SUFFIX,auth.pubg.com
