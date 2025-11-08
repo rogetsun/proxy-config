@@ -1,11 +1,15 @@
 DOMAIN-SUFFIX,openai.com,🧲 OpenAI
 DOMAIN-SUFFIX,chatgpt.com,🧲 OpenAI
+DOMAIN-SUFFIX,chat.com,🧲 OpenAI
+DOMAIN-SUFFIX,sora.com,🧲 OpenAI
 DOMAIN-SUFFIX,oaiusercontent.com,🧲 OpenAI
 DOMAIN-SUFFIX,oaistatic.com,🧲 OpenAI
 DOMAIN,auth0.openai.com,🧲 OpenAI
 DOMAIN-SUFFIX,auth.openai.com,🧲 OpenAI
 DOMAIN,setup.auth.openai.com,🧲 OpenAI
 DOMAIN,chatgpt.livekit.cloud,🧲 OpenAI
+DOMAIN,host.livekit.cloud,🧲 OpenAI
+DOMAIN,turn.livekit.cloud,🧲 OpenAI
 DOMAIN-SUFFIX,statsig.com,🧲 OpenAI
 DOMAIN-SUFFIX,statsigapi.net,🧲 OpenAI
 DOMAIN-SUFFIX,featuregates.org,🧲 OpenAI
@@ -16,6 +20,7 @@ DOMAIN,js.intercomcdn.com,🧲 OpenAI
 DOMAIN,rum.browser-intake-datadoghq.com,🧲 OpenAI
 DOMAIN,o33249.ingest.sentry.io,🧲 OpenAI
 DOMAIN,o207216.ingest.sentry.io,🧲 OpenAI
+DOMAIN,browser-intake-datadoghq.com,🧲 OpenAI
 DOMAIN,challenges.cloudflare.com,🧲 OpenAI
 DOMAIN,setup.workos.com,🧲 OpenAI
 DOMAIN,forwarder.workos.com,🧲 OpenAI
@@ -26,6 +31,7 @@ DOMAIN,prodregistryv2.org,🧲 OpenAI
 DOMAIN,featureassets.org,🧲 OpenAI
 DOMAIN,chat.openai.com.cdn.cloudflare.net,🧲 OpenAI
 DOMAIN-SUFFIX,openaiapi-site.azureedge.net,🧲 OpenAI
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,🧲 OpenAI
 DOMAIN-SUFFIX,openaicomproductionae4b.blob.core.windows.net,🧲 OpenAI
 DOMAIN-SUFFIX,production-openaicom-storage.azureedge.net,🧲 OpenAI
 DOMAIN-SUFFIX,openaicom.imgix.net,🧲 OpenAI
@@ -44,3 +50,5 @@ DOMAIN-SUFFIX,ai.com,🧲 OpenAI
 DOMAIN-SUFFIX,openai.azure.com,🧲 OpenAI
 DOMAIN-SUFFIX,openaipublic.blob.core.windows.net,🧲 OpenAI
 DOMAIN-SUFFIX,openaipublic.azureedge.net,🧲 OpenAI
+# Match ChatGPT WebPubSub endpoints
+URL-REGEX,^https?://chatgpt-async-webps-prod-\S+-\d+\.webpubsub\.azure\.com,🧲 OpenAI
