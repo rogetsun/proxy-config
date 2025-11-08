@@ -47,22 +47,6 @@ DOMAIN-SUFFIX,pubgmobile.cn
 DOMAIN-SUFFIX,tencent.com
 DOMAIN-SUFFIX,qq.com
 
-# 社交登录服务
-DOMAIN-SUFFIX,accounts.google.com
-DOMAIN-SUFFIX,oauth2.googleapis.com
-DOMAIN-SUFFIX,www.googleapis.com
-DOMAIN-SUFFIX,apis.google.com
-DOMAIN-SUFFIX,facebook.com
-DOMAIN-SUFFIX,graph.facebook.com
-DOMAIN-SUFFIX,connect.facebook.net
-DOMAIN-SUFFIX,twitter.com
-DOMAIN-SUFFIX,api.twitter.com
-DOMAIN-SUFFIX,abs.twimg.com
-
-# Apple登录服务
-DOMAIN-SUFFIX,appleid.apple.com
-DOMAIN-SUFFIX,idmsa.apple.com
-DOMAIN-SUFFIX,gsa.apple.com
 
 # 游戏认证和PlayFab服务
 DOMAIN-SUFFIX,playfab.com
@@ -70,25 +54,6 @@ DOMAIN-SUFFIX,playfabapi.com
 DOMAIN-SUFFIX,titledata.playfab.com
 DOMAIN-SUFFIX,developer.playfab.com
 
-# Tencent游戏云服务和CDN
-DOMAIN-SUFFIX,tgp.qq.com
-DOMAIN-SUFFIX,ssl.kohsocialapp.qq.com
-DOMAIN-SUFFIX,midas.gtimg.cn
-DOMAIN-SUFFIX,api.unipay.qq.com
-DOMAIN-SUFFIX,intl.cloud.tencent.com
-
-# AWS游戏服务和认证
-DOMAIN-SUFFIX,cognito-idp.us-east-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-identity.us-east-1.amazonaws.com
-DOMAIN-SUFFIX,sts.amazonaws.com
-DOMAIN-SUFFIX,s3.amazonaws.com
-
-# 游戏统计和崩溃报告
-DOMAIN-SUFFIX,crashlytics.com
-DOMAIN-SUFFIX,fabric.io
-DOMAIN-SUFFIX,firebase.com
-DOMAIN-SUFFIX,firebaseapp.com
-DOMAIN-SUFFIX,googleapis.com
 
 # PUBG主要游戏域名
 DOMAIN-KEYWORD,pubg
@@ -118,177 +83,9 @@ DOMAIN-SUFFIX,amazonaws.com
 DOMAIN-SUFFIX,cloudfront.net
 DOMAIN-SUFFIX,awsstatic.com
 
-# 游戏内购和支付相关
-DOMAIN-SUFFIX,in-app-purchase.com
-DOMAIN-SUFFIX,apple.com
-DOMAIN-SUFFIX,googleplay.com
-
-# 语音聊天服务
-DOMAIN-SUFFIX,agora.io
-DOMAIN-SUFFIX,agoralab.co
-DOMAIN-SUFFIX,voice.com
 
 # 游戏匹配和反作弊服务
 DOMAIN-SUFFIX,battleye.com
 DOMAIN-SUFFIX,easyanticheat.net
 DOMAIN-SUFFIX,pubgsvc.com
 DOMAIN-SUFFIX,pubgtracker.com
-
-# 网络连接测试和优化
-DOMAIN-SUFFIX,speedtest.net
-DOMAIN-SUFFIX,fast.com
-DOMAIN-SUFFIX,ping.pe
-
-# Discord 游戏语音（很多玩家使用）
-DOMAIN-SUFFIX,discord.com
-DOMAIN-SUFFIX,discordapp.com
-DOMAIN-SUFFIX,discord.gg
-
-# 游戏直播相关（很多玩家会同时使用）
-DOMAIN-SUFFIX,twitch.tv
-DOMAIN-SUFFIX,youtube.com
-DOMAIN-SUFFIX,ytimg.com
-
-# 微软和Xbox服务（某些登录选项）
-DOMAIN-SUFFIX,live.com
-DOMAIN-SUFFIX,xbox.com
-DOMAIN-SUFFIX,xboxlive.com
-
-# 更多AWS认证服务的地域端点
-DOMAIN-SUFFIX,cognito-idp.ap-southeast-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-idp.ap-northeast-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-idp.eu-west-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-identity.ap-southeast-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-identity.ap-northeast-1.amazonaws.com
-DOMAIN-SUFFIX,cognito-identity.eu-west-1.amazonaws.com
-
-# 主要游戏服务器IP段
-# 北美东部 (弗吉尼亚)
-IP-CIDR,23.23.0.0/16
-IP-CIDR,34.224.0.0/12
-IP-CIDR,50.17.0.0/16
-IP-CIDR,50.19.0.0/16
-IP-CIDR,52.0.0.0/11
-IP-CIDR,54.80.0.0/13
-IP-CIDR,54.144.0.0/14
-IP-CIDR,54.156.0.0/14
-IP-CIDR,54.160.0.0/13
-IP-CIDR,54.196.0.0/15
-IP-CIDR,54.204.0.0/15
-IP-CIDR,54.208.0.0/13
-IP-CIDR,54.224.0.0/15
-
-# 北美西部 (俄勒冈/加利福尼亚)
-IP-CIDR,34.208.0.0/12
-IP-CIDR,35.160.0.0/13
-IP-CIDR,50.112.0.0/16
-IP-CIDR,52.8.0.0/16
-IP-CIDR,52.24.0.0/14
-IP-CIDR,52.32.0.0/15
-IP-CIDR,52.36.0.0/14
-IP-CIDR,52.88.0.0/15
-IP-CIDR,54.68.0.0/14
-IP-CIDR,54.148.0.0/14
-IP-CIDR,54.184.0.0/13
-IP-CIDR,54.200.0.0/15
-IP-CIDR,54.212.0.0/15
-
-# 亚太地区 - 东京
-IP-CIDR,13.112.0.0/14
-IP-CIDR,52.68.0.0/15
-IP-CIDR,52.192.0.0/11
-IP-CIDR,54.64.0.0/15
-IP-CIDR,54.92.0.0/17
-IP-CIDR,54.150.0.0/16
-IP-CIDR,54.168.0.0/16
-IP-CIDR,54.178.0.0/15
-IP-CIDR,54.238.0.0/16
-IP-CIDR,54.248.0.0/15
-IP-CIDR,54.250.0.0/15
-
-# 亚太地区 - 首尔
-IP-CIDR,13.124.0.0/16
-IP-CIDR,52.78.0.0/15
-IP-CIDR,52.79.0.0/16
-
-# 亚太地区 - 新加坡
-IP-CIDR,13.228.0.0/15
-IP-CIDR,52.74.0.0/16
-IP-CIDR,52.76.0.0/14
-IP-CIDR,52.220.0.0/15
-IP-CIDR,54.151.0.0/17
-IP-CIDR,54.169.0.0/16
-IP-CIDR,54.179.0.0/16
-IP-CIDR,54.251.0.0/16
-IP-CIDR,54.254.0.0/15
-
-# 亚太地区 - 孟买
-IP-CIDR,13.126.0.0/15
-IP-CIDR,35.154.0.0/16
-IP-CIDR,52.66.0.0/16
-
-# 亚太地区 - 悉尼
-IP-CIDR,13.54.0.0/15
-IP-CIDR,52.62.0.0/15
-IP-CIDR,52.64.0.0/13
-IP-CIDR,54.66.0.0/16
-IP-CIDR,54.79.0.0/16
-IP-CIDR,54.153.128.0/17
-IP-CIDR,54.206.0.0/16
-IP-CIDR,54.252.0.0/16
-
-# 欧洲 - 爱尔兰
-IP-CIDR,34.240.0.0/13
-IP-CIDR,46.51.128.0/18
-IP-CIDR,46.137.0.0/17
-IP-CIDR,52.16.0.0/15
-IP-CIDR,52.18.0.0/15
-IP-CIDR,52.30.0.0/15
-IP-CIDR,52.48.0.0/14
-IP-CIDR,52.208.0.0/13
-IP-CIDR,54.72.0.0/15
-IP-CIDR,54.76.0.0/15
-IP-CIDR,54.154.0.0/16
-IP-CIDR,54.170.0.0/15
-IP-CIDR,54.194.0.0/15
-IP-CIDR,54.216.0.0/15
-IP-CIDR,54.228.0.0/16
-IP-CIDR,54.246.0.0/16
-
-# 欧洲 - 法兰克福
-IP-CIDR,35.156.0.0/14
-IP-CIDR,52.28.0.0/16
-IP-CIDR,52.57.0.0/16
-IP-CIDR,52.58.0.0/15
-IP-CIDR,54.93.0.0/16
-
-# 欧洲 - 伦敦
-IP-CIDR,35.176.0.0/13
-IP-CIDR,52.56.0.0/16
-
-# 南美 - 圣保罗
-IP-CIDR,52.67.0.0/16
-IP-CIDR,54.94.0.0/16
-IP-CIDR,54.207.0.0/16
-IP-CIDR,54.232.0.0/16
-IP-CIDR,54.233.128.0/17
-
-# 加拿大中部
-IP-CIDR,35.182.0.0/15
-IP-CIDR,52.60.0.0/16
-
-# Tencent Cloud CDN IP段（PUBG国际版主要使用）
-IP-CIDR,43.0.0.0/8
-IP-CIDR,101.0.0.0/8
-IP-CIDR,119.0.0.0/8
-IP-CIDR,129.226.0.0/16
-IP-CIDR,150.0.0.0/8
-IP-CIDR,159.138.0.0/16
-IP-CIDR,162.62.0.0/16
-IP-CIDR,203.0.0.0/8
-
-# 游戏通信常用IP段
-IP-CIDR,8.8.8.8/32
-IP-CIDR,8.8.4.4/32
-IP-CIDR,1.1.1.1/32
-IP-CIDR,1.0.0.1/32 
