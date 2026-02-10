@@ -113,6 +113,40 @@ Shadowrocket 代理规则配置文件仓库。
 - **URL Rewrite**：Google 搜索防跳转（`google.cn` → `google.com`）
 - **MITM**：仅解密 `*.google.cn` 域名
 
+## 模块说明
+
+> 模块规则优先于配置文件规则，适合用来覆盖或补充主配置中的分流策略。
+
+### uv.module — 自定义分流模块
+
+覆盖主配置的分组和规则，将本仓库的自定义规则集引用到对应代理分组：
+
+| 规则                      | 分组           |
+| ------------------------- | -------------- |
+| `DOMAIN-KEYWORD,tymetro`  | DIRECT（直连） |
+| `DOMAIN-KEYWORD,hushed`   | TG             |
+| `talkatone-rule-set.list` | talkatone      |
+| `telegram-rule-set.list`  | TG             |
+| `openai-rule-set.list`    | openai         |
+| `binance-rule-set.list`   | binance        |
+| `github-rule-set.list`    | GitHub         |
+| `pubg-game-rule-set.list` | PUBG           |
+
+### uv-game.module — 游戏专用模块
+
+专为 PUBG 国际版设计，所有游戏流量走 `游戏节点` 分组。包含：
+
+- **PUBG 核心域名**：`pubg.com`、`pubgmobile.com`、`krafton.com`、`bluehole.net`
+- **PlayFab 服务**：`playfab.com`、`playfabapi.com`
+- **认证子域名**：`id/auth/api/login/account.pubg.com` 等
+- **Krafton 认证**：`id/auth/api/oauth/sso.krafton.com`
+- **Level Infinite**：`level-infinite.com`、`proximabeta.com`
+- **社交登录**：Google OAuth、Facebook Graph（确保游戏内登录走游戏节点）
+- **AWS 认证**：`cognito-idp`、`cognito-identity`、`sts.amazonaws.com`
+- **腾讯服务**：`tencent.com`、`qq.com`、`qcloud.com`
+- **关键词匹配**：`pubg`、`krafton`、`battlegrounds`
+- **引用规则集**：`pubg-game-rule-set.list`
+
 ## 自定义规则集
 
 | 文件                      | 用途                                   |
