@@ -4,6 +4,7 @@
  * 1. 开启进程名识别并注入本机 SOCKS5 代理节点
  * 2. 保留防 TUN 死循环的内核直连规则（本地兜底）
  * 3. 从 GitHub 仓库动态挂载远程进程分流规则集（rule-providers）
+ * 4. 开启 use-hosts 并注入常用本机回环域名 hosts 映射
  */
 
 const RULE_BASE_URL =
@@ -18,9 +19,43 @@ const REMOTE_RULE_SETS = [
   // { name: "custom-local-7897", file: "local-7897.list", target: "Local-7897" },
 ];
 
+// 常用本机回环域名映射（直接解析为 127.0.0.1，避免 Fake-IP 模式下本地唤起/授权失败）
+const LOCAL_LOOPBACK_HOSTS = {
+  "localhost.weixin.qq.com": "127.0.0.1",
+  "localhost.work.weixin.qq.com": "127.0.0.1",
+  "localhost.ptlogin2.qq.com": "127.0.0.1",
+  "localhost.sec.qq.com": "127.0.0.1",
+  "localhost.wbridge.wps.cn": "127.0.0.1",
+  "*.localhost": "127.0.0.1",
+};
+
+/**
+ * 从当前订阅的代理分组中自动探测用于拉取远程规则集的出口分组，
+ * 避免 Mihomo 默认直连 raw.githubusercontent.com 时被重置导致规则集拉取失败。
+ */
+function resolveRuleProviderProxy(config) {
+  const groups = Array.isArray(config["proxy-groups"]) ? config["proxy-groups"] : [];
+  const isDirectOrReject = (group) => {
+    if (!group || !group.name) return true;
+    if (/直连|拦截|净化|direct|reject/i.test(group.name)) return true;
+    const members = Array.isArray(group.proxies) ? group.proxies : [];
+    return members.length > 0 && members.every((m) => m === "DIRECT" || m === "REJECT");
+  };
+
+  const candidates = groups.filter((g) => !isDirectOrReject(g));
+  const preferredSelect = candidates.find((g) => g.type === "select");
+  if (preferredSelect) return preferredSelect.name;
+
+  const fallbackGroup = candidates[0];
+  return fallbackGroup ? fallbackGroup.name : null;
+}
+
 function main(config) {
-  // 1. 开启进程名识别（确保任意订阅都能正确捕获进程名）
+  // 1. 开启进程名识别（确保任意订阅都能正确捕获进程名）并启用本机回环 hosts
   config["find-process-mode"] = "strict";
+  config.dns = config.dns || {};
+  config.dns["use-hosts"] = true;
+  config.hosts = Object.assign({}, config.hosts || {}, LOCAL_LOOPBACK_HOSTS);
 
   config.proxies = config.proxies || [];
   config.rules = config.rules || [];
@@ -51,9 +86,10 @@ function main(config) {
   ];
 
   // 4. 注册 GitHub 远程规则集，并生成对应的前置 RULE-SET 规则
+  const providerProxy = resolveRuleProviderProxy(config);
   const remoteRules = [];
   for (const item of REMOTE_RULE_SETS) {
-    config["rule-providers"][item.name] = {
+    const providerConfig = {
       type: "http",
       behavior: "classical",
       format: "text",
@@ -61,6 +97,10 @@ function main(config) {
       path: `./ruleset/${item.name}.list`,
       interval: 300,
     };
+    if (providerProxy) {
+      providerConfig.proxy = providerProxy;
+    }
+    config["rule-providers"][item.name] = providerConfig;
     remoteRules.push(`RULE-SET,${item.name},${item.target}`);
   }
 
