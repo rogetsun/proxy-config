@@ -4,3 +4,7 @@
 # ================= Windows =================
 # Chrome Beta 安装目录及其子目录下的所有进程
 PROCESS-PATH-REGEX,^C:\\Program Files\\Google\\Chrome Beta\\Application\\.*
+
+# ================= macOS =================
+# Chrome Canary 安装包及其子进程（兼容 /Applications 和 ~/Applications）
+PROCESS-PATH-REGEX,^(/Users/[^/]+)?/Applications/Google Chrome Canary\.app/.*
