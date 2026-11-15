@@ -59,7 +59,7 @@ function main(config) {
       format: "text",
       url: `${RULE_BASE_URL}/${item.file}`,
       path: `./ruleset/${item.name}.list`,
-      interval: 86400,
+      interval: 300,
     };
     remoteRules.push(`RULE-SET,${item.name},${item.target}`);
   }
