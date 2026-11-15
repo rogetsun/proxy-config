@@ -1,0 +1,5 @@
+# Local-8899 进程分流规则（Mihomo classical + format: text）
+# 仅填写匹配规则，不要在行尾加策略名（出口策略由 cover-rule.js 中的 RULE-SET 统一指定）
+
+# 占位规则（.invalid 为 RFC 保留无效域名，防止空规则集解析报错且不会误命中真实流量）
+DOMAIN,placeholder-local-8899.invalid

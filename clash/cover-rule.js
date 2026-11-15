@@ -14,8 +14,8 @@ const REMOTE_RULE_SETS = [
   { name: "custom-local-7890", file: "local-7890.list", target: "Local-7890" },
   { name: "custom-local-9999", file: "local-9999.list", target: "Local-9999" },
   { name: "custom-local-20122", file: "local-20122.list", target: "Local-20122" },
+  { name: "custom-local-8899", file: "local-8899.list", target: "Local-8899" },
   // { name: "custom-local-7897", file: "local-7897.list", target: "Local-7897" },
-  // { name: "custom-local-8899", file: "local-8899.list", target: "Local-8899" },
 ];
 
 function main(config) {
