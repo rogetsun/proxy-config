@@ -1,0 +1,21 @@
+# Local-9999 进程分流规则（Mihomo classical + format: text）
+# 仅填写匹配规则，不要在行尾加策略名（出口策略由 cover-rule.js 中的 RULE-SET 统一指定）
+
+# ================= Windows =================
+# Chrome Dev 安装目录及其子目录下的所有进程
+PROCESS-PATH-REGEX,^C:\\Program Files\\Google\\Chrome Dev\\Application\\.*
+# Antigravity 安装目录及其子目录下的所有进程
+PROCESS-PATH-REGEX,^D:\\UV\\AppData\\Local\\Programs\\Antigravity\\.*
+# ChatGPT（OpenAI.Codex 应用包）及其子目录下的所有进程，兼容版本号变化
+PROCESS-PATH-REGEX,^C:\\Program Files\\WindowsApps\\OpenAI\.Codex_.*
+
+# ================= macOS =================
+# Chrome Dev 安装包及其子进程（兼容 /Applications 和 ~/Applications）
+PROCESS-PATH-REGEX,^(/Users/[^/]+)?/Applications/Google Chrome Dev\.app/.*
+# Antigravity 安装包及其子进程（兼容 /Applications 和 ~/Applications）
+PROCESS-PATH-REGEX,^(/Users/[^/]+)?/Applications/Antigravity\.app/.*
+# OpenAI Codex / ChatGPT 安装包及其子进程（兼容 /Applications 和 ~/Applications）
+PROCESS-PATH-REGEX,^(/Users/[^/]+)?/Applications/Codex\.app/.*
+PROCESS-PATH-REGEX,^(/Users/[^/]+)?/Applications/ChatGPT\.app/.*
+# macOS 多子进程应用示例（如 Trae 由 Electron / Helper 发包，用路径匹配最稳）
+# PROCESS-PATH-REGEX,.*/Trae\.app/.*
