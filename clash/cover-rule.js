@@ -29,8 +29,7 @@ function main(config) {
     "PROCESS-NAME,FlClashCore,DIRECT",
     "PROCESS-NAME,xray,DIRECT",
     "PROCESS-NAME,sing-box,DIRECT",
-    // 用于FLClash,则需要注释掉FlClashCore,DIRECT
-    // "PROCESS-NAME,FlClashCore,DIRECT",
+    "PROCESS-NAME,mihomo-verge,DIRECT",
 
     // ================= Windows 按你的需要修改下方分流规则 =================
     // 命令行工具示例
