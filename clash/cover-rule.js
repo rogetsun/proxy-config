@@ -26,10 +26,11 @@ function main(config) {
   // 3. 定义前置进程规则（自上而下优先匹配）
   const customRules = [
     // 【必留】放行三个本地代理核心自身出站，防止 TUN 模式死循环
-    "PROCESS-NAME,FlClashCore,DIRECT",
-    "PROCESS-NAME,xray,DIRECT",
-    "PROCESS-NAME,sing-box,DIRECT",
-    "PROCESS-NAME,mihomo-verge,DIRECT",
+    "PROCESS-NAME-REGEX,^(FlClashCore|xray|sing-box|.*mihomo)(\\.exe)?$,DIRECT",
+    // "PROCESS-NAME,FlClashCore,DIRECT",
+    // "PROCESS-NAME,xray,DIRECT",
+    // "PROCESS-NAME,sing-box,DIRECT",
+    // "PROCESS-NAME,verge-mihomo,DIRECT",
 
     // ================= Windows 按你的需要修改下方分流规则 =================
     // 命令行工具示例
