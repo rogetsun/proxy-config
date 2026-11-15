@@ -1,0 +1,6 @@
+# Local-20122 进程分流规则（Mihomo classical + format: text）
+# 仅填写匹配规则，不要在行尾加策略名（出口策略由 cover-rule.js 中的 RULE-SET 统一指定）
+
+# ================= Windows =================
+# Chrome Beta 安装目录及其子目录下的所有进程
+PROCESS-PATH-REGEX,^C:\\Program Files\\Google\\Chrome Beta\\Application\\.*
