@@ -12,9 +12,9 @@ function main(config) {
 
   // 2. 注入本机三个本地代理端口（SOCKS5）
   const localProxies = [
-    { name: "Local-8899", type: "socks5", server: "127.0.0.1", port: 8899 },
-    { name: "Local-9999", type: "socks5", server: "127.0.0.1", port: 9999 },
-    { name: "Local-20122", type: "socks5", server: "127.0.0.1", port: 20122 },
+    { name: "Local-8899", type: "socks5", server: "127.0.0.1", port: 8899, udp: true },
+    { name: "Local-9999", type: "socks5", server: "127.0.0.1", port: 9999, udp: true },
+    { name: "Local-20122", type: "socks5", server: "127.0.0.1", port: 20122, udp: true },
   ];
 
   for (const p of localProxies) {
