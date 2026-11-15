@@ -32,7 +32,17 @@ function main(config) {
     // 用于FLClash,则需要注释掉FlClashCore,DIRECT
     // "PROCESS-NAME,FlClashCore,DIRECT",
 
-    // ================= 按你的需要修改下方分流规则 =================
+    // ================= Windows 按你的需要修改下方分流规则 =================
+    // 命令行工具示例
+    "PROCESS-NAME,curl,Local-8899",
+    //"PROCESS-PATH-REGEX,^/Applications/Google Chrome\\.app/.*,Local-8899",
+    "PROCESS-PATH-REGEX,^/Applications/Google Chrome Dev\\.app/.*,Local-9999",
+    // macOS 多子进程应用示例（如前面 lsof 看到的 Trae 实际由 Electron / Trae Helper 发包，用路径匹配最稳）
+    // "PROCESS-PATH-REGEX,.*/Trae\\.app/.*,Local-9999",
+    // "PROCESS-NAME,Telegram,Local-20122",
+    // ============================================================
+    
+    // ================= macOS 按你的需要修改下方分流规则 =================
     // 命令行工具示例
     "PROCESS-NAME,curl,Local-8899",
     //"PROCESS-PATH-REGEX,^/Applications/Google Chrome\\.app/.*,Local-8899",
