@@ -38,6 +38,8 @@ function main(config) {
     // ================= Windows 按你的需要修改下方分流规则 =================
     // 命令行工具示例
     "PROCESS-PATH-REGEX,^C:\\\\Program Files\\\\Google\\\\Chrome Dev\\\\Application\\\\.*,Local-9999",
+    // Chrome Canary (Chrome SxS) 安装目录及其子目录下的所有进程均走 Local-7890
+    "PROCESS-PATH-REGEX,^D:\\\\UV\\\\AppData\\\\Local\\\\Google\\\\Chrome SxS\\\\Application\\\\.*,Local-7890",
     // Antigravity 安装目录及其子目录下的所有进程均走 Local-9999
     "PROCESS-PATH-REGEX,^D:\\\\UV\\\\AppData\\\\Local\\\\Programs\\\\Antigravity\\\\.*,Local-9999",
     // ChatGPT（OpenAI.Codex 应用包）及其子目录下的所有进程均走 Local-9999，兼容版本号变化
