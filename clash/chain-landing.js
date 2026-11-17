@@ -1,4 +1,5 @@
 /**
+ * 公开仓库，脱敏uuid，转移到私有仓库了
  * Clash Verge Rev / Mihomo 单个订阅的「多落地链式代理」扩展脚本
  * 功能：
  * 1. 自动提取当前订阅的原始节点作为前置中转组（✈️ 链式前置），并过滤 Local- 本地端口及信息伪节点
@@ -26,7 +27,6 @@ const LANDING_SUBS = [
     groupName: "🎯 落地-台湾(yy)",
     prefix: "[台湾] ",
     url: "https://sub-yy.songyw.com/<your-uuid>/auto2",
-    excludeFilter: "→", // 过滤自带的二次中转节点，避免三跳
   },
   {
     id: "landing-gtt",
@@ -39,7 +39,6 @@ const LANDING_SUBS = [
     groupName: "🎯 落地-美国(ntt)",
     prefix: "[美国NTT] ",
     url: "http://216.167.48.203:39606/<your-uuid>/auto2",
-    excludeFilter: "→",
   },
 ];
 // ================================================
