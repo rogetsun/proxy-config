@@ -52,29 +52,37 @@ const ACL4SSR_BASE = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/C
 const SPLIT_RULE_SETS = [
   { id: "acl-lan", file: "LocalAreaNetwork.list", target: "🎯 全球直连" },
   { id: "acl-unban", file: "UnBan.list", target: "🎯 全球直连" },
-  { id: "acl-ban-ad", file: "BanAD.list", target: "🛑 广告拦截" },
-  { id: "acl-ban-app", file: "BanProgramAD.list", target: "🛑 广告拦截" },
-  { id: "acl-google-cn", file: "GoogleCN.list", target: "🎯 全球直连" },
+  { id: "acl-steam-cn", file: "Ruleset/SteamCN.list", target: "🎯 全球直连" },
+  { id: "acl-telegram", file: "Telegram.list", target: "📲 电报消息" },
   { id: "acl-ai", file: "Ruleset/AI.list", target: "💬 Ai平台" },
   { id: "acl-openai", file: "Ruleset/OpenAi.list", target: "💬 Ai平台" },
-  { id: "acl-telegram", file: "Telegram.list", target: "📲 电报消息" },
   { id: "acl-youtube", file: "Ruleset/YouTube.list", target: "📹 油管视频" },
   { id: "acl-netflix", file: "Ruleset/Netflix.list", target: "🎥 奈飞视频" },
+  { id: "acl-bahamut", file: "Ruleset/Bahamut.list", target: "📺 巴哈姆特" },
   { id: "acl-bili-hmt", file: "Ruleset/BilibiliHMT.list", target: "📺 哔哩哔哩" },
   { id: "acl-bili", file: "Ruleset/Bilibili.list", target: "📺 哔哩哔哩" },
   { id: "acl-media", file: "ProxyMedia.list", target: "🌍 国外媒体" },
-  { id: "acl-apple", file: "Apple.list", target: "🍎 苹果服务" },
+  { id: "acl-china-media", file: "ChinaMedia.list", target: "🌏 国内媒体" },
+  { id: "acl-fcm", file: "Ruleset/GoogleFCM.list", target: "📢 谷歌FCM" },
+  { id: "acl-bing", file: "Bing.list", target: "Ⓜ️ 微软Bing" },
+  { id: "acl-onedrive", file: "OneDrive.list", target: "Ⓜ️ 微软云盘" },
   { id: "acl-microsoft", file: "Microsoft.list", target: "Ⓜ️ 微软服务" },
-  { id: "acl-china-media", file: "ChinaMedia.list", target: "🇨🇳 China" },
+  { id: "acl-apple", file: "Apple.list", target: "🍎 苹果服务" },
+  { id: "acl-epic", file: "Ruleset/Epic.list", target: "🎮 游戏平台" },
+  { id: "acl-origin", file: "Ruleset/Origin.list", target: "🎮 游戏平台" },
+  { id: "acl-sony", file: "Ruleset/Sony.list", target: "🎮 游戏平台" },
+  { id: "acl-steam", file: "Ruleset/Steam.list", target: "🎮 游戏平台" },
+  { id: "acl-nintendo", file: "Ruleset/Nintendo.list", target: "🎮 游戏平台" },
+  { id: "acl-netease", file: "Ruleset/NetEaseMusic.list", target: "🎶 网易音乐" },
   { id: "acl-china-domain", file: "ChinaDomain.list", target: "🇨🇳 China" },
   { id: "acl-china-ip", file: "ChinaCompanyIp.list", target: "🇨🇳 China" },
 ];
 // ================================================
 
 /**
- * 探测当前订阅的默认主选择分组（用于业务分流组的默认出口与规则集拉取）
+ * 探测当前订阅的默认主选择分组（优先选择包含原始节点最多的 select 分组，避免误命中 Final/漏网之鱼）
  */
-function detectDefaultMainGroup(groups) {
+function detectDefaultMainGroup(groups, baseNodes) {
   const isDirectOrReject = (g) => {
     if (!g || !g.name) return true;
     if (/直连|拦截|净化|direct|reject/i.test(g.name)) return true;
@@ -82,10 +90,26 @@ function detectDefaultMainGroup(groups) {
     return members.length > 0 && members.every((m) => m === "DIRECT" || m === "REJECT");
   };
 
-  const candidates = groups.filter((g) => !isDirectOrReject(g));
-  const preferredSelect = candidates.find((g) => g.type === "select");
-  if (preferredSelect) return preferredSelect.name;
-  return candidates[0] ? candidates[0].name : null;
+  const baseNodeSet = new Set(baseNodes || []);
+  const selectCandidates = groups.filter((g) => g && g.type === "select" && !isDirectOrReject(g));
+
+  // 优先选出直接包含最多原始节点的 select 分组（如 Proxies / 吹雪云 / 🚀 节点选择）
+  let bestGroup = null;
+  let maxNodeCount = 0;
+  for (let i = 0; i < selectCandidates.length; i++) {
+    const g = selectCandidates[i];
+    const members = Array.isArray(g.proxies) ? g.proxies : [];
+    const hitCount = members.filter((m) => baseNodeSet.has(m)).length;
+    if (hitCount > maxNodeCount) {
+      maxNodeCount = hitCount;
+      bestGroup = g;
+    }
+  }
+  if (bestGroup && maxNodeCount > 0) return bestGroup.name;
+
+  if (selectCandidates[0]) return selectCandidates[0].name;
+  const fallback = groups.find((g) => !isDirectOrReject(g));
+  return fallback ? fallback.name : null;
 }
 
 /**
@@ -94,34 +118,38 @@ function detectDefaultMainGroup(groups) {
 function buildSplitGroups(defaultMainGroup, baseAutoGroups) {
   const proxyFirst = [
     ...(defaultMainGroup ? [defaultMainGroup] : []),
-    GROUP_LANDING,
     ...baseAutoGroups,
     "DIRECT",
   ];
   const directFirst = [
     "🎯 全球直连",
     ...(defaultMainGroup ? [defaultMainGroup] : []),
-    GROUP_LANDING,
   ];
 
   const defs = [
-    { name: "💬 Ai平台", proxies: [...new Set(proxyFirst)] },
     { name: "📲 电报消息", proxies: [...new Set(proxyFirst)] },
+    { name: "💬 Ai平台", proxies: [...new Set(proxyFirst)] },
     { name: "📹 油管视频", proxies: [...new Set(proxyFirst)] },
     { name: "🎥 奈飞视频", proxies: [...new Set(proxyFirst)] },
-    { name: "🌍 国外媒体", proxies: [...new Set(proxyFirst)] },
+    { name: "📺 巴哈姆特", proxies: [...new Set(proxyFirst)] },
     { name: "📺 哔哩哔哩", proxies: [...new Set(directFirst)] },
-    { name: "🍎 苹果服务", proxies: [...new Set(directFirst)] },
+    { name: "🌍 国外媒体", proxies: [...new Set(proxyFirst)] },
+    { name: "🌏 国内媒体", proxies: [...new Set(directFirst)] },
+    { name: "📢 谷歌FCM", proxies: [...new Set(proxyFirst)] },
+    { name: "Ⓜ️ 微软Bing", proxies: [...new Set(directFirst)] },
+    { name: "Ⓜ️ 微软云盘", proxies: [...new Set(directFirst)] },
     { name: "Ⓜ️ 微软服务", proxies: [...new Set(directFirst)] },
+    { name: "🍎 苹果服务", proxies: [...new Set(directFirst)] },
+    { name: "🎮 游戏平台", proxies: [...new Set(proxyFirst)] },
+    { name: "🎶 网易音乐", proxies: [...new Set(directFirst)] },
     {
       name: "🇨🇳 China",
-      proxies: [...new Set(["DIRECT", ...(defaultMainGroup ? [defaultMainGroup] : []), GROUP_LANDING])],
+      proxies: [...new Set(["DIRECT", ...(defaultMainGroup ? [defaultMainGroup] : [])])],
     },
     {
       name: "🎯 全球直连",
       proxies: [...new Set(["DIRECT", ...(defaultMainGroup ? [defaultMainGroup] : [])])],
     },
-    { name: "🛑 广告拦截", proxies: ["REJECT", "DIRECT"] },
   ];
 
   return defs.map((d) => ({ name: d.name, type: "select", proxies: d.proxies }));
@@ -143,7 +171,7 @@ function main(config) {
     .filter((g) => g && g.name && (g.type === "url-test" || g.type === "fallback"))
     .map((g) => g.name);
 
-  const defaultMainGroup = detectDefaultMainGroup(config["proxy-groups"]);
+  const defaultMainGroup = detectDefaultMainGroup(config["proxy-groups"], baseNodes);
 
   // 若原订阅没有 url-test 分组（如 Nowhere 等纯 select 订阅），自动补一个前置测速组
   const autoDialerGroupName = "⚡ 前置自动选择";
@@ -205,14 +233,13 @@ function main(config) {
     });
   }
 
-  // 3. 把“🎯 链式落地”追加到当前订阅原有 select 分组中
-  for (const group of config["proxy-groups"]) {
-    if (!group || group.type !== "select" || !Array.isArray(group.proxies)) continue;
-    if (/直连|拦截|净化|direct|reject/i.test(group.name)) continue;
-    if (group.proxies.every((m) => m === "DIRECT" || m === "REJECT")) continue;
-
-    if (!group.proxies.includes(GROUP_LANDING)) {
-      group.proxies.push(GROUP_LANDING);
+  // 3. 只把“🎯 链式落地”插入到当前订阅默认主选择分组的第一位（不动其他业务/地区分流组）
+  if (defaultMainGroup) {
+    const mainGroupObj = config["proxy-groups"].find((g) => g && g.name === defaultMainGroup);
+    if (mainGroupObj && Array.isArray(mainGroupObj.proxies)) {
+      if (!mainGroupObj.proxies.includes(GROUP_LANDING)) {
+        mainGroupObj.proxies.unshift(GROUP_LANDING);
+      }
     }
   }
 
@@ -269,14 +296,28 @@ function main(config) {
     }
   }
 
-  // 最终顺序：链式分组（含自动补齐的前置测速组） -> 原订阅默认分组 -> 新增 ACL4SSR 分流分组
+  // 将原订阅默认主选择分组（如 Proxies / 吹雪云）排在链式分组之后、ACL4SSR 分流分组之前
+  const defaultGroupObj = defaultMainGroup
+    ? originalGroups.find((g) => g.name === defaultMainGroup)
+    : null;
+  const otherOriginalGroups = defaultGroupObj
+    ? originalGroups.filter((g) => g.name !== defaultMainGroup)
+    : originalGroups;
+
+  // 除“🇨🇳 China”保留在末尾外，其余新增 ACL4SSR 分流分组紧跟在默认主分组之后、原订阅其余分组之前
+  const frontSplitGroups = finalSplitGroups.filter((g) => g.name !== "🇨🇳 China");
+  const tailSplitGroups = finalSplitGroups.filter((g) => g.name === "🇨🇳 China");
+
+  // 最终顺序：订阅默认主分组 -> 链式配置分组 -> 新增业务分流分组 -> 🇨🇳 China -> 订阅其余分组
   config["proxy-groups"] = [
+    ...(defaultGroupObj ? [defaultGroupObj] : []),
     landingMainGroup,
     dialerGroup,
     ...(extraDialerAutoGroup ? [extraDialerAutoGroup] : []),
     ...subGroups,
-    ...originalGroups,
-    ...finalSplitGroups,
+    ...frontSplitGroups,
+    ...tailSplitGroups,
+    ...otherOriginalGroups,
   ];
 
   return config;
