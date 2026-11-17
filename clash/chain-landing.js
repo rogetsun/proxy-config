@@ -287,8 +287,20 @@ function main(config) {
       splitRules.push(`RULE-SET,${item.id},${item.target}`);
     }
 
-    // 分流规则插入到当前订阅原有规则最前面（优先命中）
-    config.rules = [...splitRules, ...config.rules];
+    // 若全局脚本（cover-rule.js）已先执行，将 ACL4SSR 规则插在核心直连/进程规则之后、原订阅规则之前
+    let insertIdx = 0;
+    while (
+      insertIdx < config.rules.length &&
+      typeof config.rules[insertIdx] === "string" &&
+      /^(?:PROCESS-NAME(?:-REGEX)?,|RULE-SET,custom-local-)/i.test(config.rules[insertIdx].trim())
+    ) {
+      insertIdx++;
+    }
+    config.rules = [
+      ...config.rules.slice(0, insertIdx),
+      ...splitRules,
+      ...config.rules.slice(insertIdx),
+    ];
 
     // 若原订阅无兜底 MATCH 规则，自动补一条指向默认主分组
     if (!config.rules.some((r) => typeof r === "string" && /^MATCH,/i.test(r.trim()))) {
