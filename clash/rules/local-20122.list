@@ -3,10 +3,10 @@
 DOMAIN,placeholder-local-20122.invalid
 # ================= Windows =================
 # Chrome Beta 安装目录及其子目录下的所有进程
-# PROCESS-PATH-REGEX,^C:\\Program Files\\Google\\Chrome Beta\\Application\\.*
+# PROCESS-PATH-REGEX,(?i)^[a-z]:\\.*\\Google\\Chrome Beta\\Application\\.*
 
 # Chrome Canary (Chrome SxS) 安装目录及其子目录下的所有进程
-# PROCESS-PATH-REGEX,^D:\\UV\\AppData\\Local\\Google\\Chrome SxS\\Application\\.*
+# PROCESS-PATH-REGEX,(?i)^[a-z]:\\.*\\Google\\Chrome SxS\\Application\\.*
 
 # ================= macOS =================
 # Chrome Canary 安装包及其子进程（兼容 /Applications 和 ~/Applications）
